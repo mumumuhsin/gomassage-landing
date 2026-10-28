@@ -37,7 +37,7 @@
             align-items: center;
         }
 
-        /* Header Navigation - Tombol Kembali Lebih Elegan */
+        /* Header Navigation */
         .top-nav {
             width: 100%;
             max-width: 640px;
@@ -210,56 +210,6 @@
             font-weight: 600;
         }
 
-        /* Custom File Upload Box */
-        .file-upload-box {
-            border: 2px dashed var(--border);
-            border-radius: 12px;
-            padding: 24px;
-            text-align: center;
-            background: #F8FAFC;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            position: relative;
-        }
-
-        .file-upload-box:hover {
-            border-color: var(--accent);
-            background: #F0F8FF;
-        }
-
-        .file-upload-box input[type="file"] {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            cursor: pointer;
-            width: 100%;
-            height: 100%;
-        }
-
-        .upload-icon {
-            font-size: 28px;
-            margin-bottom: 6px;
-            display: block;
-        }
-
-        .upload-text {
-            font-size: 13.5px;
-            color: var(--muted);
-            font-weight: 500;
-        }
-
-        .upload-text strong {
-            color: var(--accent);
-        }
-
-        .file-name-preview {
-            margin-top: 8px;
-            font-size: 12px;
-            color: var(--orange);
-            font-weight: 600;
-            word-break: break-all;
-        }
-
         /* Submit Button */
         .btn-submit {
             background: linear-gradient(135deg, #0091B9 0%, #004E9B 100%);
@@ -308,7 +258,7 @@
 </head>
 <body>
 
-    <!-- Header Navigation dengan Panah Estetik -->
+    <!-- Header Navigation -->
     <div class="top-nav">
         <a href="index.html" class="btn-back">
             <span class="arrow-icon">←</span>
@@ -415,17 +365,6 @@
                 <input type="text" id="skill_lain" placeholder="Keahlian / Treatment khusus lainnya..." style="margin-top: 8px;">
             </div>
 
-            <!-- Upload Foto KTP -->
-            <div class="form-group">
-                <label>Upload foto ktp</label>
-                <div class="file-upload-box">
-                    <input type="file" id="foto_ktp" accept="image/*" onchange="previewFile()">
-                    <span class="upload-icon">📷</span>
-                    <span class="upload-text"><strong>Ketuk di sini</strong> untuk memilih Foto KTP</span>
-                    <div id="file_preview" class="file-name-preview"></div>
-                </div>
-            </div>
-
             <!-- Submit Button -->
             <button type="submit" class="btn-submit">
                 <span>Kirim Pendaftaran via WhatsApp</span>
@@ -439,16 +378,6 @@
     </div>
 
     <script>
-        function previewFile() {
-            const input = document.getElementById('foto_ktp');
-            const preview = document.getElementById('file_preview');
-            if (input.files && input.files[0]) {
-                preview.textContent = "✔ File Terpilih: " + input.files[0].name;
-            } else {
-                preview.textContent = "";
-            }
-        }
-
         function sendToWhatsApp(e) {
             e.preventDefault();
 
@@ -467,14 +396,14 @@
             }
             const strSkills = selectedSkills.length > 0 ? selectedSkills.join(', ') : 'Belum diisi';
 
-            const fileInput = document.getElementById('foto_ktp');
-            const hasFile = fileInput.files && fileInput.files.length > 0 ? "Ya (Siap dikirim)" : "Belum diunggah";
-
             const adminPhone = "6281932963534";
 
-            const text = `Halo Admin GO Massage,%0A%0ASaya ingin mendaftar sebagai *Mitra Terapis GO Massage*. Berikut detail data diri saya:%0A%0A👤 *Nama:* ${nama}%0A📱 *No WA:* ${whatsapp}%0A🏠 *Alamat Lengkap:* ${alamat}%0A📍 *Kota:* ${kota}%0A💆 *Skill yang dikuasai:* ${strSkills}%0A🆔 *Foto KTP:* ${hasFile}%0A%0AMohon diproses pendaftaran saya. Terima kasih!`;
+            const text = `Halo Admin GO Massage,%0A%0ASaya ingin mendaftar sebagai *Mitra Terapis GO Massage*. Berikut detail data diri saya:%0A%0A👤 *Nama:* ${nama}%0A📱 *No WA:* ${whatsapp}%0A🏠 *Alamat Lengkap:* ${alamat}%0A📍 *Kota:* ${kota}%0A💆 *Skill yang dikuasai:* ${strSkills}%0A%0AMohon diproses pendaftaran saya. Terima kasih!`;
 
             window.open(`https://wa.me/${adminPhone}?text=${text}`, '_blank');
+
+            // Mengosongkan kembali form setelah terkirim
+            document.getElementById('terapisForm').reset();
         }
     </script>
 </body>
