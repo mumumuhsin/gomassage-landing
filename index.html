@@ -464,6 +464,15 @@
           font-size:12px;
           color:var(--muted);
         }
+        .footer-legal-links {
+          margin-top: 12px;
+        }
+        .footer-legal-links a {
+          color: var(--dark);
+          text-decoration: underline;
+          font-weight: 500;
+          font-size: 13px;
+        }
 
         /* ========== PORTRAIT MODE - PROFESSIONAL MOBILE PRECISION ========== */
         @media (orientation: portrait){
@@ -718,15 +727,47 @@
         </div>
     </section>
 
-    <!-- Kontak -->
+    <!-- Legal / Kebijakan Privasi & Ketentuan Layanan -->
+    <section class="section" id="legal" style="background: #f8fafc; padding: 50px 0; border-top: 1px solid var(--border);">
+        <div class="container" style="max-width: 900px;">
+            <span class="label">LEGAL & KEBIJAKAN</span>
+            <h2 style="font-size: 24px; color: var(--dark); margin: 8px 0 20px;">Kebijakan Privasi & Ketentuan Layanan</h2>
+            <div style="display: grid; gap: 20px;">
+                <div id="privacy">
+                    <h4 style="font-size: 16px; color: var(--dark); margin-bottom: 6px;">Privacy Policy (Kebijakan Privasi)</h4>
+                    <p style="font-size: 14px; color: var(--muted); line-height: 1.7;">GO Massage menghargai dan melindungi kerahasiaan data pribadi pengguna aplikasi dan pengunjung situs web. Informasi yang dikumpulkan semata-mata digunakan untuk keperluan verifikasi layanan, keamanan pemesanan, serta peningkatan kualitas terapis bersertifikat kami. Kami tidak pernah membagikan data Anda kepada pihak ketiga tanpa izin.</p>
+                </div>
+                <div id="terms" style="margin-top: 10px;">
+                    <h4 style="font-size: 16px; color: var(--dark); margin-bottom: 6px;">Terms of Service (Ketentuan Layanan)</h4>
+                    <p style="font-size: 14px; color: var(--muted); line-height: 1.7;">Layanan pijat panggilan profesional ini khusus disediakan untuk wilayah Jabodetabek. Seluruh pengguna dan mitra terapis wajib mematuhi standar etika, profesionalisme, serta protokol kesehatan dan keselamatan yang berlaku demi kenyamanan bersama.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak & Footer -->
     <footer class="footer" id="kontak">
         <div class="container">
             <div class="footer-grid">
-                <div><div class="logo"><span>GO</span> Massage</div><p class="footer-desc">Brand jasa pijat panggilan profesional, informatif, dan terpercaya di Jakarta & Jabodetabek sejak 2016.</p></div>
-                <div><h5>Area Layanan</h5><p class="small">Pijat Panggilan Jakarta Pusat, Jakarta Selatan, Jakarta Barat, Jakarta Timur, Jakarta Utara, Bekasi, Depok, Tangerang, Bogor, Pijat Terdekat, Massage Profesional Jakarta</p></div>
-                <div><h5>Kontak Informasi</h5><p class="small">Jam: 05.00 - 23.00 WIB<br>Email: gomassage.official@gmail.com<br>Instagram: gomassage_indonesia</p></div>
+                <div>
+                    <div class="logo"><span>GO</span> Massage</div>
+                    <p class="footer-desc">Brand jasa pijat panggilan profesional, informatif, dan terpercaya di Jakarta & Jabodetabek sejak 2016.</p>
+                </div>
+                <div>
+                    <h5>Area Layanan</h5>
+                    <p class="small">Pijat Panggilan Jakarta Pusat, Jakarta Selatan, Jakarta Barat, Jakarta Timur, Jakarta Utara, Bekasi, Depok, Tangerang, Bogor, Pijat Terdekat, Massage Profesional Jakarta</p>
+                </div>
+                <div>
+                    <h5>Kontak & Legal</h5>
+                    <p class="small">Jam: 05.00 - 23.00 WIB<br>Email: gomassage.official@gmail.com<br>Instagram: gomassage_indonesia</p>
+                    <div class="footer-legal-links">
+                        <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a>
+                    </div>
+                </div>
             </div>
-            <div class="footer-bottom"><p>© 2026 GO Massage. Website ini bersifat informatif & edukatif</p></div>
+            <div class="footer-bottom">
+                <p>© 2026 GO Massage. Website ini bersifat informatif & edukatif</p>
+            </div>
         </div>
     </footer>
 
