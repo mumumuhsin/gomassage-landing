@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<style>
+@font-face {
+  font-family: "Optimistic";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Optimistic Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
+}
+:where(html) {
+  font-family: "Optimistic", system-ui, sans-serif;
+}
+:where(code, pre, kbd, samp) {
+  font-family: "Optimistic Mono", ui-monospace, monospace;
+}
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GO Massage - Jasa Pijat Panggilan Profesional & Bersertifikat di Jakarta</title>
+    <meta name="description" content="GO Massage adalah layanan pijat panggilan profesional bersertifikat di Jakarta & Jabodetabek. Terapis berpengalaman, privasi aman, layanan tradisional, deep tissue, refleksi, aromaterapi.">
+    <meta name="keywords" content="pijat panggilan jakarta, massage jakarta, pijat tradisional, deep tissue massage, pijat refleksi, aromaterapi jakarta, jasa pijat profesional">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* GO Massage - Updated Color Palette & Precision */
+        :root{
+          --bg:#FFFFFF;
+          --bg-soft:#BAE4F0;     /* #BAE4F0 */
+          --dark:#004E9B;        /* #004E9B */
+          --dark2:#003870;       
+          --accent:#0091B9;      /* #0091B9 */
+          --orange:#FF6500;      /* #FF6500 */
+          --yellow:#FFD500;      /* #FFD500 */
+          --text:#1C2833;
+          --muted:#5D6D7E;
+          --border:#D4E6F1;
+          --radius:16px;
+          --shadow-sm: 0 4px 20px rgba(0,78,155,0.06);
+          --shadow-md: 0 10px 30px rgba(0,78,155,0.1);
+        }
+
+        *, *::before, *::after {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        html {
+          width: 100%;
+          scroll-behavior: smooth;
+        }
+
+        body{
+          width: 100%;
+          overflow-x: hidden;
+          font-family:'Inter',sans-serif;
+          color:var(--text);
+          background:var(--bg);
+          line-height:1.6;
+          -webkit-font-smoothing:antialiased;
+        }
+
+        h1,h2,h3,h4,h5,.logo{
+          font-family:'Poppins',sans-serif;
+          color:var(--dark);
+        }
+
+        .container{
+          max-width:1200px;
+          margin:0 auto;
+          padding:0 24px;
+        }
+
+        .label{
+          font-size:11px;
+          letter-spacing:2.5px;
+          color:var(--accent);
+          font-weight:700;
+          text-transform: uppercase;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb{
+          background:var(--bg-soft);
+          border-bottom:1px solid var(--border);
+          font-size:12px;
+          padding:12px 0;
+          color:var(--dark);
+        }
+        .breadcrumb .container{
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+        }
+
+        /* Navbar - Strict Sticky Header */
+        .navbar{
+          position: -webkit-sticky;
+          position: sticky;
+          top: 0;
+          z-index: 9999;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border-bottom: 1px solid var(--border);
+          width: 100%;
+        }
+        .nav-inner{
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          height:76px;
+        }
+        .logo{
+          font-weight:700;
+          font-size:22px;
+          letter-spacing:-0.5px;
+        }
+        .logo span{
+          color:var(--accent);
+        }
+        .nav-menu{
+          display:flex;
+          gap:32px;
+          align-items: center;
+        }
+        .nav-menu a{
+          text-decoration:none;
+          color:var(--text);
+          font-size:14px;
+          font-weight:500;
+          transition: color 0.2s;
+        }
+        .nav-menu a:hover{
+          color:var(--accent);
+        }
+
+        /* Tombol Gradasi Profesional dengan Palet Baru */
+        .btn-gradient {
+          background: linear-gradient(135deg, #0091B9 0%, #004E9B 100%);
+          color: #ffffff !important;
+          padding: 12px 24px;
+          border-radius: 30px;
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: 600;
+          box-shadow: 0 4px 15px rgba(0, 145, 185, 0.3);
+          transition: all 0.3s ease;
+          display: inline-block;
+          border: none;
+          text-align: center;
+        }
+        .btn-gradient:hover {
+          background: linear-gradient(135deg, #00A8D6 0%, #003870 100%);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(0, 145, 185, 0.4);
+        }
+
+        .hamburger{
+          display:none;
+          flex-direction:column;
+          gap:6px;
+          background:none;
+          border:none;
+          cursor:pointer;
+          z-index: 10001;
+          padding: 4px;
+        }
+        .hamburger span{
+          width:24px;
+          height:2.5px;
+          background:var(--dark);
+          display:block;
+          border-radius:4px;
+          transition: transform 0.3s;
+        }
+
+        /* Hero Section */
+        .hero{
+          padding:64px 0 80px;
+          background:linear-gradient(180deg,var(--bg) 0%, var(--bg-soft) 100%);
+        }
+        .hero-grid{
+          display:grid;
+          grid-template-columns:1.1fr 0.9fr;
+          gap:48px;
+          align-items:center;
+        }
+        .hero-text h1{
+          font-size:46px;
+          line-height:1.15;
+          letter-spacing:-1px;
+          margin-bottom:20px;
+        }
+        .hero-text p{
+          color:var(--muted);
+          font-size:16px;
+          max-width:500px;
+          margin-bottom:32px;
+          line-height: 1.7;
+        }
+        .hero-stats{
+          display:flex;
+          gap:36px;
+          margin:32px 0 36px;
+          border-top: 1px solid var(--border);
+          border-bottom: 1px solid var(--border);
+          padding: 20px 0;
+        }
+        .hero-stats strong{
+          font-family:'Poppins';
+          font-size:26px;
+          display:block;
+          line-height:1.1;
+          color: var(--dark);
+        }
+        .hero-stats span{
+          font-size:11px;
+          color:var(--muted);
+          letter-spacing:0.8px;
+          text-transform:uppercase;
+          font-weight: 600;
+        }
+        .hero-actions{
+          display:flex;
+          gap:14px;
+          align-items: center;
+        }
+        .btn-primary{
+          background:var(--dark);
+          color:white;
+          padding:14px 28px;
+          border-radius:30px;
+          text-decoration:none;
+          font-size:14px;
+          font-weight:600;
+          box-shadow: var(--shadow-sm);
+          transition: transform 0.2s, background 0.2s;
+        }
+        .btn-primary:hover{
+          background: var(--accent);
+          transform: translateY(-2px);
+        }
+
+        .visual-card{
+          border:1px solid var(--border);
+          border-radius:var(--radius);
+          overflow:hidden;
+          background:white;
+          box-shadow: var(--shadow-md);
+        }
+        .visual-image{
+          height:380px;
+          background:linear-gradient(135deg,#BAE4F0 0%,#0091B9 100%);
+          position:relative;
+        }
+        .visual-image::after{
+          content:'GO Massage Editorial';
+          position:absolute;
+          inset:0;
+          display:grid;
+          place-items:center;
+          font-family:'Poppins';
+          font-weight:600;
+          letter-spacing:3px;
+          color:rgba(255,255,255,0.85);
+          font-size: 14px;
+        }
+        .visual-info{
+          padding:20px 24px;
+        }
+        .visual-info p{
+          font-size:11px;
+          letter-spacing:1px;
+          color:var(--muted);
+          text-transform: uppercase;
+          font-weight: 600;
+        }
+        .visual-info h4{
+          font-size:16px;
+          margin-top:4px;
+        }
+
+        /* Sections */
+        .section{padding:80px 0}
+        .bg-soft{background:var(--bg-soft)}
+        .bg-dark{background:var(--dark);color:white}
+        .bg-dark h2{color:white}
+        .section-title{
+          font-size:36px;
+          line-height:1.2;
+          letter-spacing:-0.5px;
+          margin:12px 0 40px;
+          max-width:580px;
+        }
+        .section-title.light{color:white}
+
+        .grid-2{
+          display:grid;
+          grid-template-columns:0.9fr 1.1fr;
+          gap:48px;
+          align-items:start;
+        }
+        .grid-2 h2{font-size:36px;line-height:1.2}
+        .about-text p{margin-bottom:16px;color:var(--muted);font-size:15px;}
+
+        .services-grid{
+          display:grid;
+          grid-template-columns:repeat(3,1fr);
+          gap:28px;
+        }
+        .service-card{
+          background:white;
+          border:1px solid var(--border);
+          border-radius:var(--radius);
+          padding:32px 28px;
+          box-shadow: var(--shadow-sm);
+          transition:all .3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .service-card:hover{
+          transform:translateY(-6px);
+          box-shadow: var(--shadow-md);
+          border-color: var(--accent);
+        }
+        .service-card h3{font-size:18px;margin-bottom:12px;}
+        .service-card p{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:18px}
+        .service-meta{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:0.8px;text-transform: uppercase;}
+
+        .grid-3{
+          display:grid;
+          grid-template-columns:repeat(3,1fr);
+          gap:28px;
+        }
+        .feature{
+          border-top:2px solid var(--border);
+          padding-top:24px;
+        }
+        .feature span{font-family:'Poppins';font-size:12px;color:var(--orange);font-weight:700}
+        .feature h4{margin:10px 0 8px;font-size:17px}
+        .feature p{font-size:14px;color:var(--muted);line-height: 1.6;}
+
+        .steps{
+          display:grid;
+          grid-template-columns:repeat(4,1fr);
+          gap:24px;
+          margin-top:24px;
+        }
+        .step{
+          border:1px solid rgba(255,255,255,0.15);
+          border-radius:var(--radius);
+          padding:28px;
+          background:rgba(255,255,255,0.05);
+        }
+        .step-num{
+          width:40px;
+          height:40px;
+          border-radius:50%;
+          background:var(--yellow);
+          color:var(--dark);
+          display:grid;
+          place-items:center;
+          font-weight:700;
+          font-size:15px;
+          margin-bottom:18px;
+          box-shadow: 0 4px 12px rgba(255,213,0,0.3);
+        }
+        .step h4{color:white;font-size:16px;margin-bottom:8px}
+        .step p{color:rgba(255,255,255,0.8);font-size:13.5px;line-height: 1.6;}
+
+        .articles{
+          display:grid;
+          grid-template-columns:repeat(3,1fr);
+          gap:28px;
+        }
+        .article-card{
+          border:1px solid var(--border);
+          border-radius:var(--radius);
+          overflow:hidden;
+          background:white;
+          box-shadow: var(--shadow-sm);
+          transition: transform 0.3s ease;
+        }
+        .article-card:hover {
+          transform: translateY(-4px);
+          box-shadow: var(--shadow-md);
+        }
+        .article-img{height:190px}
+        .article-img.img1{background:linear-gradient(135deg,#BAE4F0,#0091B9)}
+        .article-img.img2{background:linear-gradient(135deg,#0091B9,#004E9B)}
+        .article-img.img3{background:linear-gradient(135deg,#FFD500,#FF6500)}
+        .article-body{padding:24px}
+        .article-body span{font-size:10px;letter-spacing:1.5px;color:var(--orange);font-weight:700;text-transform:uppercase}
+        .article-body h4{font-size:16px;line-height:1.4;margin:10px 0}
+        .article-body p{font-size:13.5px;color:var(--muted);line-height: 1.6;}
+
+        /* FAQ */
+        .faq-container{max-width:800px}
+        .faq-list{margin-top:32px}
+        .faq-item{border-bottom:1px solid var(--border)}
+        .faq-q{
+          width:100%;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          padding:22px 0;
+          background:none;
+          border:none;
+          font-family:'Poppins';
+          font-size:16px;
+          font-weight:600;
+          cursor:pointer;
+          text-align:left;
+          color: var(--dark);
+        }
+        .faq-a{
+          max-height:0;
+          overflow:hidden;
+          transition:max-height .35s ease, padding .35s ease;
+          font-size:14px;
+          color:var(--muted);
+          padding-right:40px;
+          line-height: 1.7;
+        }
+        .faq-item.active .faq-a{
+          max-height:220px;
+          padding-bottom:22px;
+        }
+
+        /* Footer */
+        .footer{
+          background:var(--bg-soft);
+          border-top:1px solid var(--border);
+          padding:72px 0 36px;
+        }
+        .footer-grid{
+          display:grid;
+          grid-template-columns:1.5fr 1fr 1fr;
+          gap:48px;
+        }
+        .footer-desc{
+          font-size:14px;
+          color:var(--muted);
+          margin-top:14px;
+          max-width:320px;
+          line-height: 1.7;
+        }
+        .footer h5{font-size:14px;margin-bottom:16px;letter-spacing:0.5px;font-weight: 600;color: var(--dark);}
+        .small{font-size:13px;color:var(--muted);line-height:1.8}
+        .footer-bottom{
+          margin-top:56px;
+          padding-top:28px;
+          border-top:1px solid var(--border);
+          display:flex;
+          justify-content:space-between;
+          font-size:12px;
+          color:var(--muted);
+        }
+
+        /* ========== PORTRAIT MODE - PROFESSIONAL MOBILE PRECISION ========== */
+        @media (orientation: portrait){
+          .container{padding:0 20px}
+          
+          /* Mobile Navigation Drawer Fullscreen Modern */
+          .nav-menu{
+            position: fixed;
+            top: 76px;
+            left: 0;
+            width: 100vw;
+            height: calc(100vh - 76px);
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 36px 24px;
+            gap: 18px;
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 20px 30px rgba(0,78,155,0.08);
+            overflow-y: auto;
+          }
+
+          .nav-menu.open{
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+          }
+
+          .nav-menu a:not(.btn-gradient){
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--dark);
+            width: 100%;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+          }
+
+          /* Tombol Install Aplikasi di dalam Menu Mobile */
+          .nav-menu .btn-gradient {
+            display: block;
+            width: 100%;
+            margin-top: 12px;
+            text-align: center;
+            color: #ffffff !important;
+          }
+
+          .navbar > .container > .btn-gradient {
+            display: none; 
+          }
+
+          .hamburger{display:flex}
+
+          .hero{padding:40px 0 56px}
+          .hero-grid{grid-template-columns:1fr;gap:36px}
+          .hero-text h1{font-size:32px;line-height:1.2;margin-bottom:16px}
+          .hero-text p{font-size:14.5px;max-width:100%;margin-bottom:24px}
+          .hero-stats{gap:20px;justify-content: space-between;padding: 16px 0;margin: 24px 0}
+          .hero-stats strong {font-size: 22px;}
+          
+          .hero-actions {
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+          }
+          .btn-primary, .hero-actions .btn-gradient {
+            width: 100%;
+            text-align: center;
+            padding: 13px 20px;
+            font-size: 14px;
+            color: #ffffff !important;
+          }
+
+          .visual-image{height:260px}
+          
+          .section{padding:56px 0}
+          .section-title{font-size:26px;margin-bottom:28px}
+          
+          .grid-2{grid-template-columns:1fr;gap:28px}
+          .grid-2 h2{font-size:26px}
+          
+          .services-grid{grid-template-columns:1fr;gap:20px}
+          .service-card {padding: 24px 20px;}
+          
+          .grid-3{grid-template-columns:1fr;gap:20px}
+          .steps{grid-template-columns:1fr;gap:18px}
+          .step {padding: 22px 20px;}
+          
+          .articles{grid-template-columns:1fr;gap:20px}
+          
+          .footer-grid{grid-template-columns:1fr;gap:32px}
+          .footer-bottom{flex-direction:column;gap:10px;text-align: center;}
+        }
+
+        @media (orientation: landscape) or (min-width: 992px) {
+          .nav-menu .btn-gradient {
+            display: none;
+          }
+        }
+
+        /* ========== LANDSCAPE MODE - PRECISION ========== */
+        @media (orientation: landscape) and (max-width: 1180px){
+          .hero-text h1{font-size:36px}
+          .services-grid{grid-template-columns:repeat(2,1fr)}
+          .grid-3{grid-template-columns:repeat(2,1fr)}
+          .steps{grid-template-columns:repeat(2,1fr)}
+          .articles{grid-template-columns:repeat(2,1fr)}
+        }
+        @media (orientation: landscape) and (min-width: 1181px){
+          .hero-grid{grid-template-columns:1.1fr 0.9fr}
+          .services-grid{grid-template-columns:repeat(3,1fr)}
+        }
+    </style>
+</head>
+<body>
+    <!-- Breadcrumb SEO -->
+    <div class="breadcrumb">
+        <div class="container">
+            <span>Beranda / Jasa Pijat / GO Massage Jakarta</span>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <div class="logo"><span>GO</span> Massage</div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#beranda">Beranda</a>
+                <a href="#tentang">Tentang</a>
+                <a href="#layanan">Layanan</a>
+                <a href="#keunggulan">Keunggulan</a>
+                <a href="#artikel">Artikel</a>
+                <a href="#faq">FAQ</a>
+                <a href="https://play.google.com/store/apps/details?id=com.app.gomassage" target="_blank" rel="noopener noreferrer" class="btn-gradient">Install Aplikasi</a>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.app.gomassage" target="_blank" rel="noopener noreferrer" class="btn-gradient">Install Aplikasi</a>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="beranda">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <h1>GO Massage — Jasa Pijat Panggilan Profesional & Bersertifikat di Jakarta</h1>
+                <p>Brand wellness premium yang menghadirkan relaksasi terapeutik langsung ke kenyamanan rumah Anda. Fokus kami adalah kualitas terapis, standar kebersihan, dan pengalaman yang menenangkan.</p>
+                <div class="hero-stats">
+                    <div><strong>8+</strong><span>Tahun Pengalaman</span></div>
+                    <div><strong>1200+</strong><span>Klien Percaya</span></div>
+                    <div><strong>45</strong><span>Terapis Bersertifikat</span></div>
+                </div>
+                <div class="hero-actions">
+                    <a href="#tentang" class="btn-primary">Pelajari Filosofi Kami</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.app.gomassage" target="_blank" rel="noopener noreferrer" class="btn-gradient">Install Aplikasi</a>
+                </div>
+            </div>
+            <div class="visual-card">
+                <div class="visual-image"></div>
+                <div class="visual-info">
+                    <p>Est. 2016 • Jakarta</p>
+                    <h4>Standar Kebersihan & Etika Profesional</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang -->
+    <section class="section" id="tentang">
+        <div class="container grid-2">
+            <div>
+                <span class="label">TENTANG GO MASSAGE</span>
+                <h2>Brand Pijat Panggilan yang Dibangun di Atas Kepercayaan.</h2>
+            </div>
+            <div class="about-text">
+                <p>GO Massage lahir dari kebutuhan akan layanan pijat yang tidak hanya nyaman, tetapi juga aman, profesional, dan konsisten. Kami menyeleksi terapis melalui pelatihan anatomi, etika, dan hygiene.</p>
+                <p>Visi kami adalah menjadi rujukan utama wellness di rumah untuk masyarakat urban Jakarta yang menghargai waktu, privasi, dan kualitas istirahat.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layanan SEO -->
+    <section class="section bg-soft" id="layanan">
+        <div class="container">
+            <span class="label">LAYANAN INFORMATIF</span>
+            <h2 class="section-title">Jenis Layanan Terapeutik Kami</h2>
+            <div class="services-grid">
+                <article class="service-card"><h3>Pijat Tradisional</h3><p>Teknik urut warisan yang fokus pada melancarkan peredaran darah dan mengurangi pegal. Ideal untuk kelelahan harian akibat duduk lama dan kurang tidur.</p><span class="service-meta">Untuk: Pekerja kantoran, kelelahan umum</span></article>
+                <article class="service-card"><h3>Deep Tissue Massage</h3><p>Tekanan dalam yang menargetkan lapisan otot terdalam. Membantu melepaskan adhesi otot dan nyeri kronis pada punggung, leher, dan bahu.</p><span class="service-meta">Untuk: Nyeri otot kronis, postur buruk</span></article>
+                <article class="service-card"><h3>Refleksi & Akupresur</h3><p>Stimulasi titik-titik refleksi di telapak kaki dan tangan yang terhubung dengan organ. Meningkatkan sirkulasi dan membantu kualitas tidur.</p><span class="service-meta">Untuk: Relaksasi, insomnia ringan</span></article>
+                <article class="service-card"><h3>Aromaterapi Wellness</h3><p>Kombinasi pijatan lembut dengan essential oil pilihan (lavender, eucalyptus). Memberikan efek menenangkan sistem saraf dan mengurangi stres.</p><span class="service-meta">Untuk: Stres, anxiety, relaksasi mendalam</span></article>
+                <article class="service-card"><h3>Pijat Pasangan / Couple</h3><p>Sesi relaksasi bersama pasangan di rumah dengan dua terapis. Menjaga privasi dan kenyamanan tanpa perlu keluar rumah.</p><span class="service-meta">Untuk: Pasangan, quality time</span></article>
+                <article class="service-card"><h3>Sports & Recovery</h3><p>Fokus pada pemulihan otot setelah olahraga atau aktivitas fisik berat. Termasuk stretching pasif dan teknik pemulihan.</p><span class="service-meta">Untuk: Atlet, gym-goers</span></article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keunggulan -->
+    <section class="section" id="keunggulan">
+        <div class="container">
+            <div class="grid-3">
+                <div class="feature"><span>01</span><h4>Terapis Bersertifikat</h4><p>Semua terapis melewati verifikasi identitas, sertifikat pijat, dan pelatihan etika profesional.</p></div>
+                <div class="feature"><span>02</span><h4>Privasi 100% Aman</h4><p>Kami menjaga batas profesional, tidak ada layanan di luar pijat terapeutik. Keamanan klien adalah prioritas.</p></div>
+                <div class="feature"><span>03</span><h4>Hygiene Kit Steril</h4><p>Setiap sesi membawa linen bersih, minyak baru, dan sanitasi tangan standar klinik.</p></div>
+                <div class="feature"><span>04</span><h4>Jangkauan Jabodetabek</h4><p>Jakarta Pusat, Selatan, Barat, Timur, Utara, Bekasi, Depok, Tangerang, Bogor.</p></div>
+                <div class="feature"><span>05</span><h4>Edukasi, Bukan Transaksi</h4><p>Website ini fokus memberikan informasi kesehatan, bukan memaksa penjualan.</p></div>
+                <div class="feature"><span>06</span><h4>Jam Operasional Fleksibel</h4><p>Tersedia 09.00 - 22.00 WIB setiap hari, termasuk weekend dan hari libur.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cara Kerja -->
+    <section class="section bg-dark">
+        <div class="container">
+            <h2 class="section-title light">Bagaimana GO Massage Bekerja</h2>
+            <div class="steps">
+                <div class="step"><div class="step-num">1</div><h4>Konsultasi Kebutuhan</h4><p>Anda menjelaskan keluhan dan preferensi teknik pijat.</p></div>
+                <div class="step"><div class="step-num">2</div><h4>Penjadwalan</h4><p>Kami mencocokkan terapis sesuai keahlian dan area Anda.</p></div>
+                <div class="step"><div class="step-num">3</div><h4>Terapis Datang</h4><p>Terapis hadir dengan perlengkapan steril sesuai waktu.</p></div>
+                <div class="step"><div class="step-num">4</div><h4>Sesi Relaksasi</h4><p>Nikmati sesi terapeutik di ruang paling nyaman rumah Anda.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artikel SEO -->
+    <section class="section" id="artikel">
+        <div class="container">
+            <span class="label">WAWASAN & EDUKASI</span>
+            <h2 class="section-title">Artikel Kesehatan untuk SEO</h2>
+            <div class="articles">
+                <article class="article-card"><div class="article-img img1"></div><div class="article-body"><span>Manfaat Rutin</span><h4>5 Manfaat Pijat Rutin yang Didukung Riset untuk Pekerja Jakarta</h4><p>Mengapa pijat 2x sebulan dapat menurunkan kortisol dan memperbaiki postur...</p></div></article>
+                <article class="article-card"><div class="article-img img2"></div><div class="article-body"><span>Edukasi Teknik</span><h4>Perbedaan Deep Tissue vs Pijat Tradisional: Mana yang Anda Butuhkan?</h4><p>Tekanan, durasi, dan tujuan terapeutik keduanya sangat berbeda...</p></div></article>
+                <article class="article-card"><div class="article-img img3"></div><div class="article-body"><span>Tips Wellness</span><h4>Tips Menciptakan Ruang Relaksasi di Rumah Sebelum Terapis Datang</h4><p>Pencahayaan, suhu, dan musik yang tepat meningkatkan efektivitas pijat hingga 40%...</p></div></article>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section bg-soft" id="faq">
+        <div class="container faq-container">
+            <h2 class="section-title">FAQ - Pertanyaan Umum</h2>
+            <div class="faq-list">
+                <div class="faq-item active"><button class="faq-q">Apakah terapis GO Massage bersertifikat?<span>+</span></button><div class="faq-a">Ya, semua terapis memiliki sertifikat pelatihan pijat profesional, telah diverifikasi KTP, dan mengikuti code of conduct yang ketat terkait etika dan privasi.</div></div>
+                <div class="faq-item"><button class="faq-q">Area mana saja yang dijangkau GO Massage?<span>+</span></button><div class="faq-a">Kami melayani seluruh Jakarta, Bekasi, Depok, Tangerang, dan Bogor. Untuk area tertentu ada penyesuaian jadwal.</div></div>
+                <div class="faq-item"><button class="faq-q">Apakah layanan ini hanya pijat terapeutik?<span>+</span></button><div class="faq-a">100% ya. GO Massage adalah brand profesional yang hanya menyediakan layanan pijat kesehatan dan wellness. Kami menolak layanan di luar itu.</div></div>
+                <div class="faq-item"><button class="faq-q">Bagaimana standar kebersihannya?<span>+</span></button><div class="faq-a">Terapis membawa linen bersih, minyak baru per klien, hand sanitizer, dan masker. Perlengkapan dicuci dan disterilkan setiap hari.</div></div>
+                <div class="faq-item"><button class="faq-q">Apakah website ini untuk pemesanan?<span>+</span></button><div class="faq-a">Tidak. Website ini bertujuan sebagai pusat informasi brand, edukasi, dan SEO. Untuk informasi kontak, lihat bagian bawah halaman.</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak -->
+    <footer class="footer" id="kontak">
+        <div class="container">
+            <div class="footer-grid">
+                <div><div class="logo"><span>GO</span> Massage</div><p class="footer-desc">Brand jasa pijat panggilan profesional, informatif, dan terpercaya di Jakarta & Jabodetabek sejak 2016.</p></div>
+                <div><h5>Area Layanan SEO</h5><p class="small">Pijat Panggilan Jakarta Pusat, Jakarta Selatan, Jakarta Barat, Jakarta Timur, Jakarta Utara, Bekasi, Depok, Tangerang, Bogor, Pijat Terdekat, Massage Profesional Jakarta</p></div>
+                <div><h5>Kontak Informasi</h5><p class="small">Jam: 09.00 - 22.00 WIB<br>Email: hello@gomassage.id<br>Instagram: @gomassage.id</p></div>
+            </div>
+            <div class="footer-bottom"><p>© 2026 GO Massage. Website ini bersifat informatif & edukatif untuk keperluan branding dan SEO.</p></div>
+        </div>
+    </footer>
+
+    <script>
+    // @ts-nocheck
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.getElementById('hamburger');
+      const navMenu = document.getElementById('navMenu');
+
+      if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+          const isOpen = navMenu.classList.toggle('open');
+          document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        navMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            navMenu.classList.remove('open');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const btn = item.querySelector('.faq-q');
+        if (btn) {
+          btn.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            faqItems.forEach(i => i.classList.remove('active'));
+            if (!isActive) {
+              item.classList.add('active');
+            }
+          });
+        }
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', e => {
+          const targetId = anchor.getAttribute('href');
+          if (targetId && targetId !== '#') {
+            const target = document.querySelector(targetId);
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              if (navMenu) {
+                navMenu.classList.remove('open');
+                document.body.style.overflow = '';
+              }
+            }
+          }
+        });
+      });
+    });
+    </script>
+</body>
+</html>
