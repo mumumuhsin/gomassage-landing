@@ -82,14 +82,17 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 26px;
-            height: 26px;
+            width: 28px;
+            height: 28px;
             background: var(--bg-soft, #BAE4F0);
             color: var(--dark);
             border-radius: 50%;
-            font-size: 14px;
-            font-weight: bold;
             transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .btn-back .arrow-icon svg {
+            display: block;
         }
 
         .btn-back:hover {
@@ -271,10 +274,15 @@
 </head>
 <body>
 
-    <!-- Header Navigation -->
+    <!-- Header Navigation (Ikon Back Custom SVG) -->
     <div class="top-nav">
         <a href="index.html" class="btn-back">
-            <span class="arrow-icon">←</span>
+            <span class="arrow-icon">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </span>
             <span>Kembali ke Beranda</span>
         </a>
     </div>
@@ -286,7 +294,7 @@
             <p>Lengkapi formulir profesional di bawah ini untuk bergabung sebagai mitra terapis GO Massage.</p>
         </div>
 
-        <form id="terapisForm" onsubmit="sendToWhatsApp(event)">
+        <form id="terapisForm">
             <!-- Nama -->
             <div class="form-group">
                 <label for="nama">Nama Lengkap (Sesuai KTP)</label>
@@ -391,33 +399,39 @@
     </div>
 
     <script>
-        function sendToWhatsApp(e) {
-            e.preventDefault();
+    // @ts-nocheck
+    document.addEventListener('DOMContentLoaded', () => {
+        const terapisForm = document.getElementById('terapisForm');
 
-            const nama = document.getElementById('nama').value;
-            const whatsapp = document.getElementById('whatsapp').value;
-            const alamat = document.getElementById('alamat').value;
-            const kota = document.getElementById('kota').value;
-            const skillLain = document.getElementById('skill_lain').value;
+        if (terapisForm) {
+            terapisForm.addEventListener('submit', (e) => {
+                e.preventDefault();
 
-            let selectedSkills = [];
-            document.querySelectorAll('.skill-item input[type="checkbox"]:checked').forEach(cb => {
-                selectedSkills.push(cb.value);
+                const nama = document.getElementById('nama').value;
+                const whatsapp = document.getElementById('whatsapp').value;
+                const alamat = document.getElementById('alamat').value;
+                const kota = document.getElementById('kota').value;
+                const skillLain = document.getElementById('skill_lain').value;
+
+                let selectedSkills = [];
+                document.querySelectorAll('.skill-item input[type="checkbox"]:checked').forEach(cb => {
+                    selectedSkills.push(cb.value);
+                });
+                if (skillLain.trim() !== '') {
+                    selectedSkills.push(skillLain.trim());
+                }
+                const strSkills = selectedSkills.length > 0 ? selectedSkills.join(', ') : 'Belum diisi';
+
+                const adminPhone = "6281932963534";
+
+                const text = `Halo Admin GO Massage,%0A%0ASaya ingin mendaftar sebagai *Mitra Terapis GO Massage*. Berikut detail data diri saya:%0A%0A👤 *Nama:* ${nama}%0A📱 *No WA:* ${whatsapp}%0A🏠 *Alamat Lengkap:* ${alamat}%0A📍 *Kota:* ${kota}%0A💆 *Skill yang dikuasai:* ${strSkills}%0A%0AMohon diproses pendaftaran saya. Terima kasih!`;
+
+                window.open(`https://wa.me/${adminPhone}?text=${text}`, '_blank');
+
+                terapisForm.reset();
             });
-            if (skillLain.trim() !== '') {
-                selectedSkills.push(skillLain.trim());
-            }
-            const strSkills = selectedSkills.length > 0 ? selectedSkills.join(', ') : 'Belum diisi';
-
-            const adminPhone = "6281932963534";
-
-            const text = `Halo Admin GO Massage,%0A%0ASaya ingin mendaftar sebagai *Mitra Terapis GO Massage*. Berikut detail data diri saya:%0A%0A👤 *Nama:* ${nama}%0A📱 *No WA:* ${whatsapp}%0A🏠 *Alamat Lengkap:* ${alamat}%0A📍 *Kota:* ${kota}%0A💆 *Skill yang dikuasai:* ${strSkills}%0A%0AMohon diproses pendaftaran saya. Terima kasih!`;
-
-            window.open(`https://wa.me/${adminPhone}?text=${text}`, '_blank');
-
-            // Mengosongkan kembali form setelah terkirim
-            document.getElementById('terapisForm').reset();
         }
+    });
     </script>
 </body>
 </html>
