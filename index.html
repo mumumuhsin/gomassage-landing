@@ -149,25 +149,45 @@
           color:var(--accent);
         }
 
+        /* Group Tombol Sejajar Sampingan */
+        .btn-group {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
         /* Tombol Gradasi Profesional dengan Palet Baru */
         .btn-gradient {
           background: linear-gradient(135deg, #0091B9 0%, #004E9B 100%);
           color: #ffffff !important;
-          padding: 12px 24px;
+          padding: 12px 20px;
           border-radius: 30px;
           text-decoration: none;
-          font-size: 14px;
+          font-size: 13.5px;
           font-weight: 600;
           box-shadow: 0 4px 15px rgba(0, 145, 185, 0.3);
           transition: all 0.3s ease;
-          display: inline-block;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
           border: none;
           text-align: center;
+          white-space: nowrap;
         }
         .btn-gradient:hover {
           background: linear-gradient(135deg, #00A8D6 0%, #003870 100%);
           transform: translateY(-2px);
           box-shadow: 0 6px 20px rgba(0, 145, 185, 0.4);
+        }
+
+        /* Tombol Varian Terapis (Warna Oranye-Kuning) */
+        .btn-terapis {
+          background: linear-gradient(135deg, #FF6500 0%, #D44800 100%);
+          box-shadow: 0 4px 15px rgba(255, 101, 0, 0.3);
+        }
+        .btn-terapis:hover {
+          background: linear-gradient(135deg, #FF7B24 0%, #B83E00 100%);
+          box-shadow: 0 6px 20px rgba(255, 101, 0, 0.4);
         }
 
         .hamburger{
@@ -237,19 +257,23 @@
         }
         .hero-actions{
           display:flex;
-          gap:14px;
+          gap:12px;
           align-items: center;
+          flex-wrap: wrap;
         }
         .btn-primary{
           background:var(--dark);
           color:white;
-          padding:14px 28px;
+          padding:12px 24px;
           border-radius:30px;
           text-decoration:none;
           font-size:14px;
           font-weight:600;
           box-shadow: var(--shadow-sm);
           transition: transform 0.2s, background 0.2s;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
         }
         .btn-primary:hover{
           background: var(--accent);
@@ -520,16 +544,21 @@
             border-bottom: 1px solid var(--border);
           }
 
-          /* Tombol Install Aplikasi di dalam Menu Mobile */
-          .nav-menu .btn-gradient {
-            display: block;
+          /* Tombol Install Aplikasi di dalam Menu Mobile tetap Sejajar */
+          .nav-menu .btn-group {
             width: 100%;
             margin-top: 12px;
-            text-align: center;
-            color: #ffffff !important;
+            display: flex;
+            gap: 10px;
           }
 
-          .navbar > .container > .btn-gradient {
+          .nav-menu .btn-gradient {
+            flex: 1;
+            padding: 12px 8px;
+            font-size: 13px;
+          }
+
+          .navbar > .container > .btn-group {
             display: none; 
           }
 
@@ -542,17 +571,18 @@
           .hero-stats{gap:20px;justify-content: space-between;padding: 16px 0;margin: 24px 0}
           .hero-stats strong {font-size: 22px;}
           
+          /* Hero actions di Mobile dibuat sejajar sampingan */
           .hero-actions {
-            flex-direction: column;
-            gap: 12px;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
             width: 100%;
           }
-          .btn-primary, .hero-actions .btn-gradient {
-            width: 100%;
+          .hero-actions .btn-gradient {
+            flex: 1;
             text-align: center;
-            padding: 13px 20px;
-            font-size: 14px;
-            color: #ffffff !important;
+            padding: 12px 8px;
+            font-size: 13px;
           }
 
           .visual-image{height:260px}
@@ -577,7 +607,7 @@
         }
 
         @media (orientation: landscape) or (min-width: 992px) {
-          .nav-menu .btn-gradient {
+          .nav-menu .btn-group {
             display: none;
           }
         }
@@ -615,9 +645,17 @@
                 <a href="#gabung-terapis" style="color: var(--orange); font-weight: 600;">Gabung Terapis</a>
                 <a href="#artikel">Artikel</a>
                 <a href="#faq">FAQ</a>
-                <a href="https://play.google.com/store/apps/details?id=com.app.gomassage" target="_blank" rel="noopener noreferrer" class="btn-gradient">Install Aplikasi</a>
+                <!-- Group Tombol Aplikasi di Menu Mobile (Sejajar) -->
+                <div class="btn-group">
+                    <a href="https://play.google.com/store/apps/details?id=com.app.gomassage" target="_blank" rel="noopener noreferrer" class="btn-gradient">App Customer</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.app.terapisgo" target="_blank" rel="noopener noreferrer" class="btn-gradient btn-terapis">App Terapis</a>
+                </div>
             </div>
-            <a href="https://play.google.com/store/apps/details?id=com.app.gomassage" target="_blank" rel="noopener noreferrer" class="btn-gradient">Install Aplikasi</a>
+            <!-- Group Tombol Aplikasi Desktop (Sejajar) -->
+            <div class="btn-group">
+                <a href="https://play.google.com/store/apps/details?id=com.app.gomassage" target="_blank" rel="noopener noreferrer" class="btn-gradient">App Customer</a>
+                <a href="https://play.google.com/store/apps/details?id=com.app.terapisgo" target="_blank" rel="noopener noreferrer" class="btn-gradient btn-terapis">App Terapis</a>
+            </div>
             <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
         </div>
     </nav>
@@ -633,9 +671,10 @@
                     <div><strong>1200+</strong><span>Klien Percaya</span></div>
                     <div><strong>450+</strong><span>Terapis Bersertifikat</span></div>
                 </div>
+                <!-- Action Buttons di Hero dibuat Sejajar Sampingan -->
                 <div class="hero-actions">
-                    <a href="#tentang" class="btn-primary">Pelajari Filosofi Kami</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.app.gomassage" target="_blank" rel="noopener noreferrer" class="btn-gradient">Install Aplikasi</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.app.gomassage" target="_blank" rel="noopener noreferrer" class="btn-gradient">Install App Customer</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.app.terapisgo" target="_blank" rel="noopener noreferrer" class="btn-gradient btn-terapis">Install App Terapis</a>
                 </div>
             </div>
             <div class="visual-card">
@@ -723,8 +762,11 @@
                     <p style="color: var(--muted); font-size: 14px; line-height: 1.6;">Memiliki pengalaman/sertifikat pijat, berpenampilan rapi, memiliki identitas valid, serta lolos verifikasi skill dasar dari tim kami.</p>
                 </div>
             </div>
-            <!-- Tombol Pendaftaran mengarah ke halaman form lokal: daftar-terapis.html -->
-            <a href="daftar-terapis.html" class="btn-gradient" style="font-size: 15px; padding: 14px 32px;">Daftar Jadi Terapis Sekarang</a>
+            <!-- Group Tombol Pendaftaran & Aplikasi Terapis Sejajar -->
+            <div class="btn-group" style="justify-content: flex-start; flex-wrap: wrap;">
+                <a href="https://play.google.com/store/apps/details?id=com.app.terapisgo" target="_blank" rel="noopener noreferrer" class="btn-gradient btn-terapis" style="font-size: 15px; padding: 14px 28px;">Download App Terapis</a>
+                <a href="daftar-terapis.html" class="btn-primary" style="font-size: 15px; padding: 14px 28px;">Daftar Form Web</a>
+            </div>
         </div>
     </section>
 
