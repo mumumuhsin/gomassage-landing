@@ -31,7 +31,7 @@
             background: linear-gradient(135deg, #BAE4F0 0%, #F0F4F8 100%);
             color: var(--text);
             min-height: 100vh;
-            padding: 24px 16px 40px;
+            padding: 0 16px 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -50,21 +50,30 @@
             user-select: text;
         }
 
-        /* Header Navigation */
+        /* Header Navigation Sticky */
         .top-nav {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 999;
             width: 100%;
             max-width: 640px;
-            margin-bottom: 20px;
+            padding: 16px 0 12px;
+            margin-bottom: 12px;
             display: flex;
             justify-content: flex-start;
             align-items: center;
+            /* Transparansi halus di belakang tombol saat scroll */
+            background: linear-gradient(180deg, rgba(186, 228, 240, 0.95) 0%, rgba(240, 244, 248, 0.8) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .btn-back {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             color: var(--dark);
@@ -74,7 +83,7 @@
             font-size: 14px;
             font-weight: 600;
             border: 1px solid var(--border);
-            box-shadow: 0 4px 15px rgba(0, 78, 155, 0.08);
+            box-shadow: 0 4px 15px rgba(0, 78, 155, 0.12);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -274,7 +283,7 @@
 </head>
 <body>
 
-    <!-- Header Navigation (Ikon Back Custom SVG) -->
+    <!-- Header Navigation Sticky (Ikon Back Custom SVG) -->
     <div class="top-nav">
         <a href="index.html" class="btn-back">
             <span class="arrow-icon">
