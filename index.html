@@ -190,23 +190,52 @@
           box-shadow: 0 6px 20px rgba(255, 101, 0, 0.4);
         }
 
+        /* ANIMASI HAMBURGER MODERN */
         .hamburger{
           display:none;
           flex-direction:column;
-          gap:6px;
-          background:none;
-          border:none;
+          justify-content:center;
+          align-items:center;
+          gap:5px;
+          width:42px;
+          height:42px;
+          background:rgba(0, 78, 155, 0.05);
+          border:1px solid var(--border);
+          border-radius:12px;
           cursor:pointer;
           z-index: 10001;
-          padding: 4px;
+          padding: 0;
+          transition: all 0.3s ease;
+        }
+        .hamburger:hover {
+          background: rgba(0, 78, 155, 0.1);
         }
         .hamburger span{
-          width:24px;
+          width:22px;
           height:2.5px;
           background:var(--dark);
           display:block;
           border-radius:4px;
-          transition: transform 0.3s;
+          transition: transform 0.35s cubic-bezier(0.68, -0.6, 0.32, 1.6), opacity 0.25s ease, background 0.3s ease;
+          transform-origin: center;
+        }
+
+        /* State Saat Menu Terbuka (Morphing ke 'X') */
+        .hamburger.open {
+          background: rgba(255, 101, 0, 0.1);
+          border-color: rgba(255, 101, 0, 0.3);
+        }
+        .hamburger.open span:nth-child(1) {
+          transform: translateY(7.5px) rotate(45deg);
+          background: var(--orange);
+        }
+        .hamburger.open span:nth-child(2) {
+          opacity: 0;
+          transform: translateX(-12px);
+        }
+        .hamburger.open span:nth-child(3) {
+          transform: translateY(-7.5px) rotate(-45deg);
+          background: var(--orange);
         }
 
         /* Hero Section */
@@ -656,7 +685,12 @@
                 <a href="https://play.google.com/store/apps/details?id=com.app.gomassage" target="_blank" rel="noopener noreferrer" class="btn-gradient">App Customer</a>
                 <a href="https://play.google.com/store/apps/details?id=com.app.terapisgo" target="_blank" rel="noopener noreferrer" class="btn-gradient btn-terapis">App Terapis</a>
             </div>
-            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+            <!-- Tombol Hamburger dengan Animasi -->
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
@@ -850,12 +884,15 @@
       if (hamburger && navMenu) {
         hamburger.addEventListener('click', () => {
           const isOpen = navMenu.classList.toggle('open');
+          // Toggle class open pada tombol hamburger untuk memicu animasi
+          hamburger.classList.toggle('open', isOpen);
           document.body.style.overflow = isOpen ? 'hidden' : '';
         });
 
         navMenu.querySelectorAll('a').forEach(link => {
           link.addEventListener('click', () => {
             navMenu.classList.remove('open');
+            hamburger.classList.remove('open');
             document.body.style.overflow = '';
           });
         });
@@ -885,6 +922,7 @@
               target.scrollIntoView({ behavior: 'smooth', block: 'start' });
               if (navMenu) {
                 navMenu.classList.remove('open');
+                if (hamburger) hamburger.classList.remove('open');
                 document.body.style.overflow = '';
               }
             }
